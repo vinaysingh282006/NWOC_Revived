@@ -1,0 +1,257 @@
+/* ====================================================
+   NWOC – Nexus Spring of Code  |  animations.css
+   ==================================================== */
+
+/* ── Reveal on scroll ── */
+.reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+        opacity 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.reveal:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.reveal:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+.reveal:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+.reveal:nth-child(6) {
+    transition-delay: 0.5s;
+}
+
+/* ── Float (chips, hero elements) ── */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.float-anim {
+    animation: float 3s ease-in-out infinite;
+}
+
+.float-anim-delayed {
+    animation: float 3s ease-in-out 1.5s infinite;
+}
+
+/* ── Pulsing dot (status indicators) ── */
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px transparent;
+    }
+}
+
+/* ── Ticker / Marquee ── */
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* ── Terminal cursor blink ── */
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ── Gradient shimmer (shimmer-able elements) ── */
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.12) 40%,
+            rgba(255, 255, 255, 0.04) 80%);
+    background-size: 200% auto;
+    animation: shimmer 2.4s linear infinite;
+}
+
+/* ── Aurora orb drift ── */
+@keyframes drift-purple {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(80px, 100px);
+    }
+}
+
+@keyframes drift-cyan {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-90px, 70px);
+    }
+}
+
+@keyframes drift-orange {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(60px, -80px);
+    }
+}
+
+/* ── Rotate border (conic gradient badge effect) ── */
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotate-border {
+    to {
+        --angle: 360deg;
+    }
+}
+
+.rotating-border {
+    border: 2px solid;
+    border-image: conic-gradient(from var(--angle), #A855F7, #06B6D4, #A855F7) 1;
+    animation: rotate-border 4s linear infinite;
+}
+
+/* ── Count-up pop ── */
+@keyframes count-pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.count-pop {
+    animation: count-pop 0.25s ease-out;
+}
+
+/* ── Fade in up (generic) ── */
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up {
+    animation: fade-up 0.5s ease both;
+}
+
+/* ── Scale in (modal open) ── */
+@keyframes scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.scale-in {
+    animation: scale-in 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ── Hero badge pulse ── */
+@keyframes badge-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);
+    }
+}
+
+.badge-pill {
+    animation: badge-glow 3s ease-in-out infinite;
+}
+
+/* ── Terminal typing cursor ── */
+.term-cursor {
+    animation: blink 1s step-end infinite;
+}
+
+/* ── Reduce motion override ── */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}

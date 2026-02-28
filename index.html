@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NWOC – Nexus Spring of Code | Ship Real Code, Build Real Reputation</title>
+  <meta name="description"
+    content="NWOC is a global open-source contribution event where 2,400+ developers ship real code, earn reputation points, and grow. Season 2026 is live. Apply now." />
+  <meta name="keywords" content="open source, winter of code, hackathon, NWOC, nexus, contributions, developers" />
+  <meta property="og:title" content="NWOC – Nexus Spring of Code" />
+  <meta property="og:description"
+    content="Ship real code. Build real reputation. Join 2,400+ developers contributing to 180+ open-source projects." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Three.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+</head>
+
+<body>
+
+  <!-- Aurora Orbs -->
+  <div class="aurora aurora-purple" aria-hidden="true"></div>
+  <div class="aurora aurora-cyan" aria-hidden="true"></div>
+  <div class="aurora aurora-orange" aria-hidden="true"></div>
+
+  <!-- Dot Grid -->
+  <div class="dot-grid" aria-hidden="true"></div>
+
+  <!-- Three.js Canvas will be inserted here by scene.js -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAVBAR ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner container">
+      <!-- Logo -->
+      <a href="#" class="nav-logo" aria-label="NWOC Home">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-text">NWOC</span>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <span class="logo-sub">Nexus Spring of Code</span>
+      </a>
+
+      <!-- Center Links -->
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#tasks" class="nav-link">Tasks</a></li>
+        <li><a href="#leaderboard" class="nav-link">Leaderboard</a></li>
+        <li><a href="#apply" class="nav-link nav-link-highlight">Apply</a></li>
+      </ul>
+
+      <!-- Right Actions -->
+      <div class="nav-actions">
+        <button id="cmd-trigger" class="cmd-pill" aria-label="Open command palette (Ctrl+K)" title="Ctrl+K">
+          <span class="cmd-icon" aria-hidden="true">⌘</span><span>K</span>
+        </button>
+        <button class="btn-ghost" id="sign-in-btn">Sign In</button>
+        <a href="#apply" class="btn-primary nav-apply">Apply Now <span aria-hidden="true">→</span></a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false"
+          aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="hero" class="hero" aria-labelledby="hero-heading">
+    <div class="hero-inner container">
+
+      <!-- Left Column -->
+      <div class="hero-left">
+        <div class="badge-pill reveal">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span>Season 2026 is Live · 2,400+ Developers</span>
+        </div>
+
+        <h1 id="hero-heading" class="hero-h1 reveal">
+          <span class="h1-line h1-white">NEXUS</span>
+          <span class="h1-line h1-purple">WINTER</span>
+          <span class="h1-line h1-white h1-underline">OF CODE</span>
+        </h1>
+
+        <p class="hero-body reveal">
+          Ship real code. Build real reputation. Join a global community making open-source contributions that matter.
+        </p>
+
+        <!-- Stats -->
+        <div class="stats-row reveal" role="list">
+          <div class="stat-item" role="listitem">
+            <span class="stat-number" data-target="2400">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Developers</span>
+          </div>
+          <div class="stat-sep" aria-hidden="true"></div>
+          <div class="stat-item" role="listitem">
+            <span class="stat-number" data-target="180">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-sep" aria-hidden="true"></div>
+          <div class="stat-item" role="listitem">
+            <span class="stat-number" data-target="14">0</span><span class="stat-suffix">k+</span>
+            <span class="stat-label">Commits</span>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="cta-row reveal">
+          <a href="#tasks" class="btn-primary btn-lg" id="start-contributing-btn">Start Contributing <span
+              aria-hidden="true">→</span></a>
+          <button class="btn-glass btn-lg" id="watch-demo-btn">Watch Demo <span aria-hidden="true">▶</span></button>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="social-proof reveal">
+          <div class="avatar-stack" aria-hidden="true">
+            <div class="avatar-circle av1"></div>
+            <div class="avatar-circle av2"></div>
+            <div class="avatar-circle av3"></div>
+            <div class="avatar-circle av4"></div>
+            <div class="avatar-circle av5"></div>
+          </div>
+          <span class="social-text">Joined by 2,400+ contributors this season <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="hero-right">
+
+        <!-- 3D Tube Circle Visualization -->
+        <div class="hero-tube-wrap">
+          <!-- Outer pulse rings -->
+          <div class="hero-tube-ring ring-1" aria-hidden="true"></div>
+          <div class="hero-tube-ring ring-2" aria-hidden="true"></div>
+          <div class="hero-tube-ring ring-3" aria-hidden="true"></div>
+
+          <!-- Circle container with canvas inside -->
+          <div class="hero-tube-circle">
+            <canvas id="hero-tube-canvas" aria-hidden="true"></canvas>
+            <!-- Vignette overlay to blend edges -->
+            <div class="hero-tube-vignette" aria-hidden="true"></div>
+          </div>
+
+          <!-- Floating labels -->
+          <div class="hero-tube-chip chip-top float-anim">
+            <span class="chip-dot chip-dot-cyan" aria-hidden="true"></span> Open Source
+          </div>
+          <div class="hero-tube-chip chip-bottom float-anim-delayed">
+            <span class="chip-dot chip-dot-purple" aria-hidden="true"></span> Live Collaboration
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MARQUEE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-content">
+        <span class="marquee-item">⚡ 14,200+ Commits</span><span class="marquee-sep">·</span>
+        <span class="marquee-item">🔥 2,400 Developers</span><span class="marquee-sep">·</span>
+        <span class="marquee-item">🚀 180 Projects</span><span class="marquee-sep">·</span>
+        <span class="marquee-item">🏆 Season 2026 Live</span><span class="marquee-sep">·</span>
+        <span class="marquee-item">✦ Applications Open</span><span class="marquee-sep">·</span>
+        <span class="marquee-item">💎 Top Contributors Rewarded</span><span class="marquee-sep">·</span>
+      </span>
+      <span class="marquee-content" aria-hidden="true">
+        <span class="marquee-item">⚡ 14,200+ Commits</span><span class="marquee-sep">·</span>
+        <span class="marquee-item">🔥 2,400 Developers</span><span class="marquee-sep">·</span>
+        <span class="marquee-item">🚀 180 Projects</span><span class="marquee-sep">·</span>
+        <span class="marquee-item">🏆 Season 2026 Live</span><span class="marquee-sep">·</span>
+        <span class="marquee-item">✦ Applications Open</span><span class="marquee-sep">·</span>
+        <span class="marquee-item">💎 Top Contributors Rewarded</span><span class="marquee-sep">·</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ WHY WE DO IT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="mission" class="mission-section section-pad" aria-labelledby="mission-heading">
+    <div class="container">
+      <div class="mission-grid">
+        <!-- Left: Big statement -->
+        <div class="mission-left">
+          <span class="eyebrow-pill reveal">OUR PURPOSE</span>
+          <h2 id="mission-heading" class="mission-h2 reveal">
+            CODE IS THE<br /><span class="gradient-text">MOST POWERFUL</span><br />LANGUAGE ON EARTH
+          </h2>
+          <p class="mission-body reveal">
+            Every great piece of software started as an idea and a few lines of code written by someone who cared. NWOC
+            exists to prove that a student, a hobbyist, a first-timer — anyone with a keyboard and curiosity — can shape
+            the tools the world relies on.
+          </p>
+          <p class="mission-body reveal">
+            We don't sell dreams. We give you the environment, the community, and the accountability to actually ship.
+            Then we make sure the world sees it.
+          </p>
+          <div class="mission-stats reveal">
+            <div class="mstat">
+              <span class="mstat-num">3</span>
+              <span class="mstat-label">Seasons run</span>
+            </div>
+            <div class="mstat">
+              <span class="mstat-num">40+</span>
+              <span class="mstat-label">Countries</span>
+            </div>
+            <div class="mstat">
+              <span class="mstat-num">100%</span>
+              <span class="mstat-label">Open source</span>
+            </div>
+          </div>
+        </div>
+        <!-- Right: Value cards -->
+        <div class="mission-right">
+          <div class="value-card glass-card reveal">
+            <span class="value-icon">🔥</span>
+            <div>
+              <h3 class="value-title">Real Code, Real Impact</h3>
+              <p class="value-desc">Every merged PR ships to production. Your contribution isn't a practice exercise —
+                it's used by real teams and real users.</p>
+            </div>
+          </div>
+          <div class="value-card glass-card reveal">
+            <span class="value-icon">🌐</span>
+            <div>
+              <h3 class="value-title">Global Mentorship Network</h3>
+              <p class="value-desc">Get paired with experienced engineers who review your code, give feedback, and help
+                you grow faster than any bootcamp.</p>
+            </div>
+          </div>
+          <div class="value-card glass-card reveal">
+            <span class="value-icon">📈</span>
+            <div>
+              <h3 class="value-title">Verifiable Reputation</h3>
+              <p class="value-desc">Your NWOC profile links directly to your PRs, reviews, and points. Share it instead
+                of a resume — let the code speak.</p>
+            </div>
+          </div>
+          <div class="value-card glass-card reveal">
+            <span class="value-icon">🤝</span>
+            <div>
+              <h3 class="value-title">Community First</h3>
+              <p class="value-desc">2,400+ contributors on Discord, weekly code jams, and a leaderboard that rewards
+                collaboration, not just commits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FEATURES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="projects" class="features section-pad" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">WHY NWOC</span>
+        <h2 id="features-heading" class="section-h2 reveal">BUILT FOR <span class="gradient-text">BUILDERS</span></h2>
+        <p class="section-sub reveal">Everything you need to contribute meaningfully and grow as a developer.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Card 1: Span 2 cols -->
+        <div class="glass-card bento-card bento-wide reveal" tabindex="0">
+          <div class="bento-left">
+            <div class="feature-icon icon-purple" aria-hidden="true">⚡</div>
+            <h3 class="feature-title">Real-time Collaboration</h3>
+            <p class="feature-desc">Work alongside contributors globally. See live edits, leave inline comments, and
+              sync your branches in real time. Every keystroke is shared, every review instant.</p>
+          </div>
+          <div class="bento-right">
+            <div class="collab-surface" aria-hidden="true">
+              <div class="collab-line"></div>
+              <div class="collab-line short"></div>
+              <div class="collab-line medium"></div>
+              <div class="cursor-pill cursor-purple">Aryan</div>
+              <div class="cursor-pill cursor-cyan" style="top: 38px; left: 40%;">Priya</div>
+              <div class="cursor-pill cursor-orange" style="top: 68px; left: 20%;">Rahul</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card bento-card reveal" tabindex="0">
+          <div class="feature-icon icon-cyan" aria-hidden="true">🤖</div>
+          <h3 class="feature-title">Smart Issue Matching</h3>
+          <p class="feature-desc">Our AI matches open issues to your skills, language preference, and past
+            contributions. No more doom-scrolling through 400 open issues.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card bento-card reveal" tabindex="0">
+          <div class="feature-icon icon-green" aria-hidden="true">🏆</div>
+          <h3 class="feature-title">Reputation Engine</h3>
+          <p class="feature-desc">Every PR, review, and doc contribution earns rep. Build a verifiable developer profile
+            that speaks louder than a resume.</p>
+        </div>
+
+        <!-- Card 4: Span 2 cols — Heatmap -->
+        <div class="glass-card bento-card bento-wide reveal" tabindex="0">
+          <h3 class="feature-title">Contribution Heatmap</h3>
+          <p class="feature-desc">Your activity this season — 14,200 total contributions</p>
+          <div class="heatmap-wrapper" aria-label="Contribution heatmap">
+            <div class="heatmap-months" aria-hidden="true">
+              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span>
+            </div>
+            <div class="heatmap-grid" id="heatmap-main"></div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="glass-card bento-card reveal" tabindex="0">
+          <div class="feature-icon icon-orange" aria-hidden="true">🌍</div>
+          <h3 class="feature-title">Global Leaderboard</h3>
+          <p class="feature-desc">Compete with 2,400+ developers across 40+ countries. Weekly, monthly, and all-time
+            rankings updated live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HOW IT WORKS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="how" class="how-section section-pad" aria-labelledby="how-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">THE PROCESS</span>
+        <h2 id="how-heading" class="section-h2 reveal">HOW <span class="gradient-text">CONTRIBUTIONS</span> WORK</h2>
+        <p class="section-sub reveal">From zero to merged PR in four steps. No setup hell, no gatekeeping.</p>
+      </div>
+
+      <div class="how-layout">
+        <!-- Steps timeline -->
+        <div class="how-steps">
+          <div class="how-step reveal" tabindex="0">
+            <div class="step-num">01</div>
+            <div class="step-line" aria-hidden="true"></div>
+            <div class="step-content">
+              <h3 class="step-title">Apply &amp; Get Onboarded</h3>
+              <p class="step-desc">Fill out a 2-minute form. We'll match your skills and interests and send you an
+                invite to the NWOC GitHub org + Discord in under 24 hours.</p>
+              <span class="step-tag">~2 min</span>
+            </div>
+          </div>
+          <div class="how-step reveal" tabindex="0">
+            <div class="step-num">02</div>
+            <div class="step-line" aria-hidden="true"></div>
+            <div class="step-content">
+              <h3 class="step-title">Pick an Issue</h3>
+              <p class="step-desc">Browse the task board filtered by language, difficulty, and points. Claim an issue
+                with one click — it's locked to you for 72 hours.</p>
+              <span class="step-tag">500+ issues open</span>
+            </div>
+          </div>
+          <div class="how-step reveal" tabindex="0">
+            <div class="step-num">03</div>
+            <div class="step-line" aria-hidden="true"></div>
+            <div class="step-content">
+              <h3 class="step-title">Code, Review, Iterate</h3>
+              <p class="step-desc">Fork the repo, write the code, open a PR. A maintainer reviews it within 48 hours.
+                Get feedback, push fixes, repeat until it's perfect.</p>
+              <span class="step-tag">48h review SLA</span>
+            </div>
+          </div>
+          <div class="how-step reveal" tabindex="0">
+            <div class="step-num">04</div>
+            <div class="step-line last" aria-hidden="true"></div>
+            <div class="step-content">
+              <h3 class="step-title">Merge &amp; Earn Points</h3>
+              <p class="step-desc">PR merged. Points added to your profile instantly. Climb the leaderboard. Unlock
+                badges. Your contribution is live in production.</p>
+              <span class="step-tag">Instant reward</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live simulation terminal -->
+        <div class="sim-wrap">
+          <div class="sim-header glass-card reveal">
+            <div class="sim-badge">🔴 LIVE DEMO</div>
+            <span class="sim-title">Watch a contribution happen in real time</span>
+          </div>
+          <div class="sim-terminal glass-card reveal" id="sim-terminal" aria-live="polite">
+            <div class="terminal-bar">
+              <div class="term-dots" aria-hidden="true">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="term-title">nwoc — contribution simulation</span>
+              <button class="sim-restart" id="sim-restart" title="Restart simulation">↺ Restart</button>
+            </div>
+            <div class="terminal-body sim-body" id="sim-output">
+              <!-- Lines injected by JS -->
+            </div>
+          </div>
+          <div class="sim-progress reveal" id="sim-progress-wrap">
+            <div class="sim-prog-label">
+              <span>Contribution progress</span>
+              <span id="sim-prog-pct">0%</span>
+            </div>
+            <div class="sim-prog-bar">
+              <div class="sim-prog-fill" id="sim-prog-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ OPEN TASKS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="tasks" class="tasks-section section-pad" aria-labelledby="tasks-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">OPEN ISSUES</span>
+        <h2 id="tasks-heading" class="section-h2 reveal">OPEN <span class="gradient-text">TASKS</span></h2>
+        <p class="section-sub reveal">Pick an issue, ship a PR, earn points. Real projects. Real impact.</p>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="filter-row" role="group" aria-label="Filter tasks by category">
+        <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
+        <button class="filter-btn" data-filter="frontend" id="filter-frontend">Frontend</button>
+        <button class="filter-btn" data-filter="backend" id="filter-backend">Backend</button>
+        <button class="filter-btn" data-filter="devops" id="filter-devops">DevOps</button>
+        <button class="filter-btn" data-filter="docs" id="filter-docs">Docs</button>
+      </div>
+
+      <!-- Task Cards Grid -->
+      <div class="tasks-grid" id="tasks-grid">
+
+        <article class="glass-card task-card reveal difficulty-hard" data-category="backend" tabindex="0"
+          aria-labelledby="task-1-title">
+          <div class="task-top">
+            <h3 class="task-title" id="task-1-title">Add OAuth2 Provider Support</h3>
+            <span class="pts-badge">500 pts</span>
+          </div>
+          <div class="task-tags">
+            <span class="diff-pill diff-hard">Hard</span>
+            <span class="cat-pill">Backend</span>
+          </div>
+          <p class="task-desc">Implement OAuth2 authorization code flow with PKCE for GitHub, Google, and GitLab
+            providers with secure session handling.</p>
+          <div class="task-footer">
+            <div class="task-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="status-text">Open</span>
+              <span class="repo-name">nexus-core</span>
+            </div>
+            <button class="btn-apply">Quick Apply <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="glass-card task-card reveal difficulty-medium" data-category="frontend" tabindex="0"
+          aria-labelledby="task-2-title">
+          <div class="task-top">
+            <h3 class="task-title" id="task-2-title">Redesign Contribution Graph</h3>
+            <span class="pts-badge">350 pts</span>
+          </div>
+          <div class="task-tags">
+            <span class="diff-pill diff-medium">Medium</span>
+            <span class="cat-pill">Frontend</span>
+          </div>
+          <p class="task-desc">Rebuild the heatmap component using SVG with smooth transitions, improved accessibility,
+            and dark mode support.</p>
+          <div class="task-footer">
+            <div class="task-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="status-text">Open</span>
+              <span class="repo-name">nwoc-ui</span>
+            </div>
+            <button class="btn-apply">Quick Apply <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="glass-card task-card reveal difficulty-easy" data-category="docs" tabindex="0"
+          aria-labelledby="task-3-title">
+          <div class="task-top">
+            <h3 class="task-title" id="task-3-title">Write Docker Setup Guide</h3>
+            <span class="pts-badge">150 pts</span>
+          </div>
+          <div class="task-tags">
+            <span class="diff-pill diff-easy">Easy</span>
+            <span class="cat-pill">Docs</span>
+          </div>
+          <p class="task-desc">Create a comprehensive step-by-step Docker Compose setup guide for local development with
+            troubleshooting tips.</p>
+          <div class="task-footer">
+            <div class="task-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="status-text">Open</span>
+              <span class="repo-name">nwoc-infra</span>
+            </div>
+            <button class="btn-apply">Quick Apply <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="glass-card task-card reveal difficulty-hard" data-category="backend" tabindex="0"
+          aria-labelledby="task-4-title">
+          <div class="task-top">
+            <h3 class="task-title" id="task-4-title">Fix WebSocket Race Condition</h3>
+            <span class="pts-badge">400 pts</span>
+          </div>
+          <div class="task-tags">
+            <span class="diff-pill diff-hard">Hard</span>
+            <span class="cat-pill">Backend</span>
+          </div>
+          <p class="task-desc">Diagnose and patch the race condition causing dropped messages under high concurrency in
+            the realtime events pipeline.</p>
+          <div class="task-footer">
+            <div class="task-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="status-text">Open</span>
+              <span class="repo-name">nexus-rt</span>
+            </div>
+            <button class="btn-apply">Quick Apply <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="glass-card task-card reveal difficulty-medium" data-category="devops" tabindex="0"
+          aria-labelledby="task-5-title">
+          <div class="task-top">
+            <h3 class="task-title" id="task-5-title">Build CLI Progress Bar</h3>
+            <span class="pts-badge">250 pts</span>
+          </div>
+          <div class="task-tags">
+            <span class="diff-pill diff-medium">Medium</span>
+            <span class="cat-pill">DevOps</span>
+          </div>
+          <p class="task-desc">Add an animated progress bar to the nwoc CLI using terminal escape sequences. Must
+            support TTY detection and CI fallback.</p>
+          <div class="task-footer">
+            <div class="task-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="status-text">Open</span>
+              <span class="repo-name">nwoc-cli</span>
+            </div>
+            <button class="btn-apply">Quick Apply <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="glass-card task-card reveal difficulty-medium" data-category="frontend" tabindex="0"
+          aria-labelledby="task-6-title">
+          <div class="task-top">
+            <h3 class="task-title" id="task-6-title">Improve Mobile Dashboard</h3>
+            <span class="pts-badge">300 pts</span>
+          </div>
+          <div class="task-tags">
+            <span class="diff-pill diff-medium">Medium</span>
+            <span class="cat-pill">Frontend</span>
+          </div>
+          <p class="task-desc">Refactor the dashboard layout for viewports under 768px with improved touch targets,
+            responsive cards, and bottom nav.</p>
+          <div class="task-footer">
+            <div class="task-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="status-text">Open</span>
+              <span class="repo-name">nwoc-ui</span>
+            </div>
+            <button class="btn-apply">Quick Apply <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FEATURED PROJECTS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="featured-projects" class="projects-section section-pad" aria-labelledby="projects-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">OPEN SOURCE</span>
+        <h2 id="projects-heading" class="section-h2 reveal">FEATURED <span class="gradient-text">PROJECTS</span></h2>
+        <p class="section-sub reveal">These are the repos you'll be contributing to. All production-grade. All open to
+          contributors.</p>
+      </div>
+      <div class="projects-grid">
+
+        <div class="glass-card project-card reveal" tabindex="0">
+          <div class="proj-header">
+            <div class="proj-icon proj-icon-purple" aria-hidden="true">⚙</div>
+            <div class="proj-meta">
+              <h3 class="proj-name">nexus-core</h3>
+              <span class="proj-lang"><span class="lang-dot" style="background:#3B82F6"></span>TypeScript</span>
+            </div>
+            <span class="proj-stars">⭐ 2.1k</span>
+          </div>
+          <p class="proj-desc">The central API gateway and auth service powering the entire NWOC platform. Handles 50k+
+            requests/day across microservices.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">API</span>
+            <span class="proj-tag">Auth</span>
+            <span class="proj-tag">PostgreSQL</span>
+          </div>
+          <div class="proj-footer">
+            <span class="proj-issues">🔴 12 open issues</span>
+            <a href="#tasks" class="btn-apply">Contribute →</a>
+          </div>
+        </div>
+
+        <div class="glass-card project-card reveal" tabindex="0">
+          <div class="proj-header">
+            <div class="proj-icon proj-icon-cyan" aria-hidden="true">🎨</div>
+            <div class="proj-meta">
+              <h3 class="proj-name">nwoc-ui</h3>
+              <span class="proj-lang"><span class="lang-dot" style="background:#F97316"></span>React / TSX</span>
+            </div>
+            <span class="proj-stars">⭐ 1.4k</span>
+          </div>
+          <p class="proj-desc">The contributor dashboard, leaderboard, and task explorer. Built with Next.js 15 and a
+            custom design system. All components are documented.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">Next.js</span>
+            <span class="proj-tag">TailwindCSS</span>
+            <span class="proj-tag">Storybook</span>
+          </div>
+          <div class="proj-footer">
+            <span class="proj-issues">🟠 8 open issues</span>
+            <a href="#tasks" class="btn-apply">Contribute →</a>
+          </div>
+        </div>
+
+        <div class="glass-card project-card reveal" tabindex="0">
+          <div class="proj-header">
+            <div class="proj-icon proj-icon-green" aria-hidden="true">⚡</div>
+            <div class="proj-meta">
+              <h3 class="proj-name">nexus-rt</h3>
+              <span class="proj-lang"><span class="lang-dot" style="background:#22C55E"></span>Go</span>
+            </div>
+            <span class="proj-stars">⭐ 890</span>
+          </div>
+          <p class="proj-desc">Real-time WebSocket server for live leaderboard updates, PR notifications, and
+            collaborative editing. Handles 10k+ concurrent connections.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">WebSocket</span>
+            <span class="proj-tag">Redis</span>
+            <span class="proj-tag">Go</span>
+          </div>
+          <div class="proj-footer">
+            <span class="proj-issues">🔴 6 open issues</span>
+            <a href="#tasks" class="btn-apply">Contribute →</a>
+          </div>
+        </div>
+
+        <div class="glass-card project-card reveal" tabindex="0">
+          <div class="proj-header">
+            <div class="proj-icon proj-icon-orange" aria-hidden="true">🖥</div>
+            <div class="proj-meta">
+              <h3 class="proj-name">nwoc-cli</h3>
+              <span class="proj-lang"><span class="lang-dot" style="background:#A855F7"></span>Python</span>
+            </div>
+            <span class="proj-stars">⭐ 620</span>
+          </div>
+          <p class="proj-desc">The official NWOC command-line tool. Lets contributors claim issues, track progress, and
+            submit PRs without leaving the terminal.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">CLI</span>
+            <span class="proj-tag">Python</span>
+            <span class="proj-tag">GitHub API</span>
+          </div>
+          <div class="proj-footer">
+            <span class="proj-issues">🟡 9 open issues</span>
+            <a href="#tasks" class="btn-apply">Contribute →</a>
+          </div>
+        </div>
+
+        <div class="glass-card project-card reveal" tabindex="0">
+          <div class="proj-header">
+            <div class="proj-icon proj-icon-purple" aria-hidden="true">📦</div>
+            <div class="proj-meta">
+              <h3 class="proj-name">nwoc-infra</h3>
+              <span class="proj-lang"><span class="lang-dot" style="background:#94A3B8"></span>Terraform / K8s</span>
+            </div>
+            <span class="proj-stars">⭐ 340</span>
+          </div>
+          <p class="proj-desc">Infrastructure as code for the entire NWOC stack. Docker Compose for local dev,
+            Kubernetes manifests for production on GCP.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">Terraform</span>
+            <span class="proj-tag">Kubernetes</span>
+            <span class="proj-tag">GCP</span>
+          </div>
+          <div class="proj-footer">
+            <span class="proj-issues">🟢 4 open issues</span>
+            <a href="#tasks" class="btn-apply">Contribute →</a>
+          </div>
+        </div>
+
+        <div class="glass-card project-card reveal project-card-cta" tabindex="0">
+          <div class="proj-cta-inner">
+            <span class="proj-cta-icon" aria-hidden="true">+</span>
+            <h3 class="proj-cta-title">180+ More Projects</h3>
+            <p class="proj-cta-sub">Spanning ML, mobile, DevOps, compilers, databases, and more. Browse the full list
+              after you apply.</p>
+            <a href="#apply" class="btn-primary" style="margin-top:16px;font-size:14px;height:44px;padding:0 22px;">View
+              All Projects →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ DASHBOARD MOCKUP ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="dashboard" class="dashboard-section section-pad" aria-labelledby="dashboard-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">YOUR WORKSPACE</span>
+        <h2 id="dashboard-heading" class="section-h2 reveal">YOUR <span class="gradient-text">COMMAND CENTER</span></h2>
+        <p class="section-sub reveal">Track your contributions, explore open issues, and manage your reputation — all in
+          one place.</p>
+      </div>
+
+      <!-- Browser Chrome Card -->
+      <div class="browser-chrome-wrap reveal">
+        <div class="browser-chrome glass-card">
+          <!-- Top Bar -->
+          <div class="browser-bar">
+            <div class="browser-dots" aria-hidden="true">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="browser-url">app.nwoc.dev/dashboard</div>
+          </div>
+
+          <!-- Content Area -->
+          <div class="browser-content">
+            <!-- Sidebar -->
+            <div class="dash-sidebar" aria-hidden="true">
+              <div class="sidebar-icon active"></div>
+              <div class="sidebar-icon"></div>
+              <div class="sidebar-icon"></div>
+              <div class="sidebar-icon"></div>
+              <div class="sidebar-icon"></div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="dash-main">
+              <!-- Greeting -->
+              <div class="dash-header">
+                <span class="dash-greeting">Good morning, Aryan 👋</span>
+                <span class="streak-badge">🔥 7-day streak</span>
+              </div>
+
+              <!-- Stat Cards -->
+              <div class="dash-stats">
+                <div class="dash-stat glass-card">
+                  <span class="ds-num">1,247</span>
+                  <span class="ds-label">Contributions</span>
+                </div>
+                <div class="dash-stat glass-card">
+                  <span class="ds-num">23</span>
+                  <span class="ds-label">Open Issues</span>
+                </div>
+                <div class="dash-stat glass-card">
+                  <span class="ds-num">89</span>
+                  <span class="ds-label">PRs Merged</span>
+                </div>
+                <div class="dash-stat glass-card">
+                  <span class="ds-num ds-purple">4,820</span>
+                  <span class="ds-label">Rep Points</span>
+                </div>
+              </div>
+
+              <!-- Bottom Row -->
+              <div class="dash-bottom">
+                <!-- Mini Heatmap -->
+                <div class="dash-heatmap">
+                  <div class="heatmap-grid" id="heatmap-dash"></div>
+                </div>
+                <!-- Activity Feed -->
+                <div class="dash-activity">
+                  <span class="activity-title">Recent Activity</span>
+                  <div class="activity-item">
+                    <span class="act-icon act-merged" aria-hidden="true">↑</span>
+                    <div class="act-text">
+                      <span>PR #142 merged into nexus-core</span>
+                      <span class="act-time">2h ago</span>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <span class="act-icon act-review" aria-hidden="true">👁</span>
+                    <div class="act-text">
+                      <span>Reviewed issue #089</span>
+                      <span class="act-time">5h ago</span>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <span class="act-icon act-claimed" aria-hidden="true">⚡</span>
+                    <div class="act-text">
+                      <span>Claimed issue #156</span>
+                      <span class="act-time">1d ago</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ LEADERBOARD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="leaderboard" class="leaderboard-section section-pad" aria-labelledby="leaderboard-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">SEASON 2026</span>
+        <h2 id="leaderboard-heading" class="section-h2 reveal">TOP <span class="gradient-text">CONTRIBUTORS</span></h2>
+      </div>
+
+      <!-- Period Toggle -->
+      <div class="period-toggle reveal" role="group" aria-label="Select leaderboard period">
+        <button class="period-btn active" data-period="week" id="period-week">This Week</button>
+        <button class="period-btn" data-period="month" id="period-month">This Month</button>
+        <button class="period-btn" data-period="all" id="period-all">All Time</button>
+      </div>
+
+      <!-- Podium -->
+      <div class="podium reveal" aria-label="Top 3 contributors podium">
+        <!-- #2 -->
+        <div class="podium-card podium-silver">
+          <div class="podium-medal" aria-label="2nd place">🥈</div>
+          <div class="podium-avatar av-silver" aria-hidden="true"></div>
+          <div class="podium-name">Priya Nair</div>
+          <div class="podium-handle">@priya_codes</div>
+          <div class="podium-pts"><span class="stat-number pts-count" data-target="10820">0</span> <span
+              class="pts-unit">pts</span></div>
+        </div>
+
+        <!-- #1 -->
+        <div class="podium-card podium-gold">
+          <div class="podium-crown" aria-hidden="true">👑</div>
+          <div class="podium-avatar av-gold" aria-hidden="true"></div>
+          <div class="podium-name podium-name-1">Aryan Sharma</div>
+          <div class="podium-handle">@aryan_dev</div>
+          <div class="podium-pts podium-pts-1"><span class="stat-number pts-count" data-target="12450">0</span> <span
+              class="pts-unit">pts</span></div>
+          <div class="podium-badges" aria-label="Badges">🏆 🔥 ⚡</div>
+        </div>
+
+        <!-- #3 -->
+        <div class="podium-card podium-bronze">
+          <div class="podium-medal" aria-label="3rd place">🥉</div>
+          <div class="podium-avatar av-bronze" aria-hidden="true"></div>
+          <div class="podium-name">Rohan Mehta</div>
+          <div class="podium-handle">@roh4n_m</div>
+          <div class="podium-pts"><span class="stat-number pts-count" data-target="9340">0</span> <span
+              class="pts-unit">pts</span></div>
+        </div>
+      </div>
+
+      <!-- Leaderboard Table -->
+      <div class="lb-table-wrap glass-card reveal" role="region" aria-label="Full leaderboard table">
+        <table class="lb-table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Developer</th>
+              <th scope="col">Contributions</th>
+              <th scope="col">PRs Merged</th>
+              <th scope="col">Points</th>
+              <th scope="col">Badges</th>
+            </tr>
+          </thead>
+          <tbody id="lb-tbody">
+            <tr class="lb-gold">
+              <td>1</td>
+              <td class="lb-dev">
+                <div class="lb-avatar lb-av1"></div>
+                <div><span class="lb-name">Aryan Sharma</span><span class="lb-handle">@aryan_dev</span></div>
+              </td>
+              <td>2,340</td>
+              <td>89</td>
+              <td class="lb-pts">12,450</td>
+              <td>🏆 🔥 ⚡</td>
+            </tr>
+            <tr class="lb-silver">
+              <td>2</td>
+              <td class="lb-dev">
+                <div class="lb-avatar lb-av2"></div>
+                <div><span class="lb-name">Priya Nair</span><span class="lb-handle">@priya_codes</span></div>
+              </td>
+              <td>1,980</td>
+              <td>71</td>
+              <td class="lb-pts">10,820</td>
+              <td>🔥 ⚡</td>
+            </tr>
+            <tr class="lb-bronze">
+              <td>3</td>
+              <td class="lb-dev">
+                <div class="lb-avatar lb-av3"></div>
+                <div><span class="lb-name">Rohan Mehta</span><span class="lb-handle">@roh4n_m</span></div>
+              </td>
+              <td>1,720</td>
+              <td>63</td>
+              <td class="lb-pts">9,340</td>
+              <td>⚡</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="lb-dev">
+                <div class="lb-avatar lb-av4"></div>
+                <div><span class="lb-name">Sneha Kapoor</span><span class="lb-handle">@sneha_k</span></div>
+              </td>
+              <td>1,540</td>
+              <td>55</td>
+              <td class="lb-pts">8,120</td>
+              <td>🔥</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="lb-dev">
+                <div class="lb-avatar lb-av5"></div>
+                <div><span class="lb-name">Vikram Rao</span><span class="lb-handle">@vikram_r</span></div>
+              </td>
+              <td>1,290</td>
+              <td>48</td>
+              <td class="lb-pts">7,450</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="lb-dev">
+                <div class="lb-avatar lb-av6"></div>
+                <div><span class="lb-name">Aisha Bhat</span><span class="lb-handle">@aisha_b</span></div>
+              </td>
+              <td>1,180</td>
+              <td>44</td>
+              <td class="lb-pts">6,890</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="lb-dev">
+                <div class="lb-avatar lb-av7"></div>
+                <div><span class="lb-name">Dev Patel</span><span class="lb-handle">@dev_p</span></div>
+              </td>
+              <td>1,050</td>
+              <td>39</td>
+              <td class="lb-pts">6,120</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="lb-dev">
+                <div class="lb-avatar lb-av8"></div>
+                <div><span class="lb-name">Meera Iyer</span><span class="lb-handle">@meera_i</span></div>
+              </td>
+              <td>980</td>
+              <td>36</td>
+              <td class="lb-pts">5,780</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="lb-dev">
+                <div class="lb-avatar lb-av9"></div>
+                <div><span class="lb-name">Karan Singh</span><span class="lb-handle">@kxran</span></div>
+              </td>
+              <td>860</td>
+              <td>31</td>
+              <td class="lb-pts">4,990</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="lb-dev">
+                <div class="lb-avatar lb-av10"></div>
+                <div><span class="lb-name">Zara Ahmed</span><span class="lb-handle">@z_ahmed</span></div>
+              </td>
+              <td>740</td>
+              <td>27</td>
+              <td class="lb-pts">4,230</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ TEAM ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="team" class="team-section section-pad" aria-labelledby="team-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">THE PEOPLE</span>
+        <h2 id="team-heading" class="section-h2 reveal">MEET THE <span class="gradient-text">TEAM</span></h2>
+        <p class="section-sub reveal">Built by developers, for developers. We've been in the open-source trenches — we
+          know what contributors actually need.</p>
+      </div>
+      <div class="team-grid">
+
+        <div class="glass-card team-card reveal" tabindex="0">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar ta-purple" aria-hidden="true">AS</div>
+            <div class="team-glow team-glow-purple" aria-hidden="true"></div>
+          </div>
+          <div class="team-badge">Founder</div>
+          <h3 class="team-name">Aman Singh</h3>
+          <p class="team-role">Founder &amp; Visionary</p>
+          <p class="team-bio">Aman started NWOC with a single belief: every developer deserves a chance to build
+            something real. He scaled the program from 40 contributors in Season 1 to 2,400+ in Season 3.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social" aria-label="GitHub">GH</a>
+            <a href="#" class="team-social" aria-label="Twitter">𝕏</a>
+            <a href="#" class="team-social" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <div class="glass-card team-card reveal" tabindex="0">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar ta-cyan" aria-hidden="true">VK</div>
+            <div class="team-glow team-glow-cyan" aria-hidden="true"></div>
+          </div>
+          <div class="team-badge team-badge-cyan">Co-founder &amp; Tech Lead</div>
+          <h3 class="team-name">Vinay Kumar Singh</h3>
+          <p class="team-role">Co-founder &amp; Technical Lead</p>
+          <p class="team-bio">Vinay architected the entire NWOC platform from the ground up — the real-time
+            infrastructure, the reputation engine, and the CLI toolchain contributors use every day.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social" aria-label="GitHub">GH</a>
+            <a href="#" class="team-social" aria-label="Twitter">𝕏</a>
+            <a href="#" class="team-social" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <div class="glass-card team-card reveal" tabindex="0">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar ta-orange" aria-hidden="true">RT</div>
+            <div class="team-glow team-glow-orange" aria-hidden="true"></div>
+          </div>
+          <div class="team-badge team-badge-orange">CEO</div>
+          <h3 class="team-name">Retuja</h3>
+          <p class="team-role">Chief Executive Officer</p>
+          <p class="team-bio">Retuja leads NWOC's operations, partnerships, and growth strategy. She's the reason NWOC
+            is trusted by 40+ companies who hire directly from our contributor pool.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social" aria-label="GitHub">GH</a>
+            <a href="#" class="team-social" aria-label="Twitter">𝕏</a>
+            <a href="#" class="team-social" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ━ 3D OPEN SOURCE UNIVERSE ━ -->
+  <section id="universe" class="universe-section section-pad" aria-labelledby="universe-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">🔭 FOR BEGINNERS</span>
+        <h2 id="universe-heading" class="section-h2 reveal">THE OPEN SOURCE <span class="gradient-text">UNIVERSE</span>
+        </h2>
+        <p class="section-sub reveal">Never contributed before? This 3D simulation shows exactly how open source works.
+          Hover over objects to learn.</p>
+      </div>
+      <div class="universe-layout">
+        <div class="universe-canvas-wrap reveal">
+          <canvas id="universe-canvas" aria-label="Interactive 3D open source universe simulation"></canvas>
+          <div class="universe-legend">
+            <div class="legend-item"><span class="legend-dot" style="background:#A855F7"></span>Central Repository</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#06B6D4"></span>Forks (your copy)</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#22C55E"></span>Merged PRs</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#F97316"></span>Open Issues</div>
+          </div>
+        </div>
+        <div class="universe-explainer">
+          <div class="explainer-tooltip glass-card" id="universe-tooltip">
+            <span class="tooltip-icon">📚</span>
+            <p class="tooltip-text">Hover over any object in the simulation to learn what it represents in real open
+              source projects.</p>
+          </div>
+          <div class="explainer-steps">
+            <div class="ex-step glass-card reveal">
+              <div class="ex-num">1</div>
+              <div>
+                <h4 class="ex-title">🟣 The Repository (Repo)</h4>
+                <p class="ex-desc">Think of it as a project folder on GitHub. It contains all the code, history, and
+                  issues. The big purple sphere in the center IS the repo.</p>
+              </div>
+            </div>
+            <div class="ex-step glass-card reveal">
+              <div class="ex-num">2</div>
+              <div>
+                <h4 class="ex-title">🔵 Fork = Your Personal Copy</h4>
+                <p class="ex-desc">When you fork a repo, GitHub creates YOUR OWN copy. The cyan orbiting spheres are
+                  forks — they spin around the main repo.</p>
+              </div>
+            </div>
+            <div class="ex-step glass-card reveal">
+              <div class="ex-num">3</div>
+              <div>
+                <h4 class="ex-title">🟢 Pull Request (PR)</h4>
+                <p class="ex-desc">You make changes in your fork, then open a "Pull Request" asking the main repo to
+                  accept your changes. Green streaks = PRs flying toward the center.</p>
+              </div>
+            </div>
+            <div class="ex-step glass-card reveal">
+              <div class="ex-num">4</div>
+              <div>
+                <h4 class="ex-title">🟠 Issues</h4>
+                <p class="ex-desc">Issues are tasks, bugs, or feature requests. Orange orbs are open issues waiting for
+                  someone (YOU!) to claim and fix them.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━ TESTIMONIALS ━ -->
+  <section id="testimonials" class="testimonials-section section-pad" aria-labelledby="testi-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">SUCCESS STORIES</span>
+        <h2 id="testi-heading" class="section-h2 reveal">WHAT <span class="gradient-text">CONTRIBUTORS</span> SAY</h2>
+        <p class="section-sub reveal">Real developers. Real results. Unfiltered.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="glass-card testi-card reveal">
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">NWOC gave me my first open-source merged PR. Three months later I got a call from a
+            startup who found my profile through the leaderboard. I'm now a full-time engineer.</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#A855F7,#7C3AED)">AV</div>
+            <div>
+              <div class="testi-name">Arjun Verma</div>
+              <div class="testi-role">Software Engineer @ Razorpay</div>
+              <div class="testi-season">Season 2 • 500+ pts</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card testi-card reveal">
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">I was a total beginner. The newbie-friendly issues are real — I went from zero to 3
+            merged PRs in my first week. The mentors on Discord are incredible.</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#06B6D4,#0891B2)">SK</div>
+            <div>
+              <div class="testi-name">Sanya Khanna</div>
+              <div class="testi-role">CS Student @ IIT Bombay</div>
+              <div class="testi-season">Season 3 • 750+ pts</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card testi-card reveal">
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">The NWOC leaderboard page is literally in my resume. Every interview I've been to, the
+            interviewer has already seen my contributions before we even start talking.</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#22C55E,#16A34A)">RM</div>
+            <div>
+              <div class="testi-name">Rohan Mehta</div>
+              <div class="testi-role">SDE-2 @ Flipkart</div>
+              <div class="testi-season">Season 1&2&3 • 9,340 pts</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card testi-card reveal">
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">I contributed to the nwoc-cli repo and it literally helped me crack my system design
+            round at Atlassian. The code review process here is world-class.</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#F97316,#EA580C)">PD</div>
+            <div>
+              <div class="testi-name">Prabhat Das</div>
+              <div class="testi-role">Platform Engineer @ Atlassian</div>
+              <div class="testi-season">Season 2 • 620+ pts</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card testi-card reveal">
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">The 72-hour issue lock system is genius. No more losing a task to someone else after
+            working on it for days. It's fair, transparent, and actually encourages you to move fast.</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#EC4899,#DB2777)">NB</div>
+            <div>
+              <div class="testi-name">Nandini Bose</div>
+              <div class="testi-role">Open Source Advocate</div>
+              <div class="testi-season">Season 3 • 430+ pts</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card testi-card reveal">
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">I've mentored at 3 seasons now. The quality of contributors keeps going up. NWOC isn't
+            just teaching people to code — it's teaching them to build and collaborate at a professional level.</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)">KJ</div>
+            <div>
+              <div class="testi-name">Kavitha J.</div>
+              <div class="testi-role">Staff Engineer @ Stripe (Mentor)</div>
+              <div class="testi-season">Mentor since Season 1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━ SEASON TIMELINE ━ -->
+  <section id="timeline" class="timeline-section section-pad" aria-labelledby="timeline-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">HISTORY</span>
+        <h2 id="timeline-heading" class="section-h2 reveal">OUR <span class="gradient-text">JOURNEY</span></h2>
+        <p class="section-sub reveal">From a Discord channel to a global contributor program in 3 seasons.</p>
+      </div>
+      <div class="timeline-track">
+        <div class="timeline-line" aria-hidden="true"></div>
+        <div class="tl-item tl-left glass-card reveal">
+          <div class="tl-dot tl-dot-purple" aria-hidden="true"></div>
+          <div class="tl-date">Dec 2023</div>
+          <h3 class="tl-title">💡 The Idea</h3>
+          <p class="tl-desc">Aman Singh posts in a Discord server: "What if we ran a Google Summer of Code-style program
+            but for Indian college students?" 40 people say yes within 24 hours.</p>
+          <div class="tl-tag">40 founding contributors</div>
+        </div>
+        <div class="tl-item tl-right glass-card reveal">
+          <div class="tl-dot tl-dot-cyan" aria-hidden="true"></div>
+          <div class="tl-date">Jan 2024</div>
+          <h3 class="tl-title">🚀 Season 1 Launch</h3>
+          <p class="tl-desc">NWOC Season 1 goes live with 5 projects and 40 contributors. The first PR is merged on Day
+            3. By the end of the season, 180 PRs are merged across 5 repos.</p>
+          <div class="tl-tag">180 PRs merged</div>
+        </div>
+        <div class="tl-item tl-left glass-card reveal">
+          <div class="tl-dot tl-dot-green" aria-hidden="true"></div>
+          <div class="tl-date">Dec 2024</div>
+          <h3 class="tl-title">🌍 Season 2: Going Global</h3>
+          <p class="tl-desc">Season 2 opens to contributors worldwide. 620 contributors from 18 countries. The NWOC CLI
+            is released. The leaderboard goes real-time. 3 contributors get hired from their NWOC profiles.</p>
+          <div class="tl-tag">620 contributors • 18 countries</div>
+        </div>
+        <div class="tl-item tl-right glass-card reveal">
+          <div class="tl-dot tl-dot-orange" aria-hidden="true"></div>
+          <div class="tl-date">Jan 2026</div>
+          <h3 class="tl-title">📈 Season 3: The Big One</h3>
+          <p class="tl-desc">Season 3 explodes. 2,400+ contributors. 40+ countries. 180 partner projects. 14,200+
+            commits. 40+ companies actively recruit from the NWOC leaderboard. The reputation engine goes live.</p>
+          <div class="tl-tag">2,400+ contributors • 14,200+ commits</div>
+        </div>
+        <div class="tl-item tl-left glass-card reveal tl-future">
+          <div class="tl-dot tl-dot-purple tl-pulse" aria-hidden="true"></div>
+          <div class="tl-date">Dec 2026</div>
+          <h3 class="tl-title">✨ Season 4: What’s Coming</h3>
+          <p class="tl-desc">AI-assisted issue matching. Real-time pairing with a mentor on first PR. University
+            partnership program. NWOC Certificate of Excellence recognized by 100+ companies. Applications open soon.
+          </p>
+          <div class="tl-tag tl-tag-future">📥 Applications Opening Soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━ HIRING PARTNERS ━ -->
+  <section id="partners" class="partners-section section-pad" aria-labelledby="partners-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">HIRING PARTNERS</span>
+        <h2 id="partners-heading" class="section-h2 reveal">COMPANIES THAT <span class="gradient-text">HIRE</span> FROM
+          NWOC</h2>
+        <p class="section-sub reveal">40+ companies actively source engineers directly from the NWOC leaderboard. Your
+          profile is your resume.</p>
+      </div>
+      <div class="partners-grid">
+        <div class="partner-card glass-card reveal" tabindex="0">
+          <div class="partner-logo" style="color:#F97316">Razorpay</div>
+          <p class="partner-hired">🟠 12 hires from NWOC</p>
+        </div>
+        <div class="partner-card glass-card reveal" tabindex="0">
+          <div class="partner-logo" style="color:#06B6D4">Atlassian</div>
+          <p class="partner-hired">🔵 8 hires from NWOC</p>
+        </div>
+        <div class="partner-card glass-card reveal" tabindex="0">
+          <div class="partner-logo" style="color:#A855F7">Zepto</div>
+          <p class="partner-hired">🟣 6 hires from NWOC</p>
+        </div>
+        <div class="partner-card glass-card reveal" tabindex="0">
+          <div class="partner-logo" style="color:#22C55E">Groww</div>
+          <p class="partner-hired">🟢 9 hires from NWOC</p>
+        </div>
+        <div class="partner-card glass-card reveal" tabindex="0">
+          <div class="partner-logo" style="color:#F59E0B">Flipkart</div>
+          <p class="partner-hired">🟡 11 hires from NWOC</p>
+        </div>
+        <div class="partner-card glass-card reveal" tabindex="0">
+          <div class="partner-logo" style="color:#EC4899">Meesho</div>
+          <p class="partner-hired">🌸 5 hires from NWOC</p>
+        </div>
+        <div class="partner-card glass-card reveal" tabindex="0">
+          <div class="partner-logo" style="color:#06B6D4">CRED</div>
+          <p class="partner-hired">🔵 7 hires from NWOC</p>
+        </div>
+        <div class="partner-card glass-card reveal" tabindex="0">
+          <div class="partner-logo" style="color:#94A3B8">+ 33 More</div>
+          <p class="partner-hired">actively recruiting</p>
+        </div>
+      </div>
+      <div class="partners-cta reveal">
+        <p class="partners-note">📧 Are you a hiring company? <a href="mailto:partners@nwoc.dev"
+            class="inline-link">Partner with NWOC →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━ REWARDS & PERKS ━ -->
+  <section id="rewards" class="rewards-section section-pad" aria-labelledby="rewards-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">🏆 WHAT YOU GET</span>
+        <h2 id="rewards-heading" class="section-h2 reveal">REWARDS &amp; <span class="gradient-text">PERKS</span></h2>
+        <p class="section-sub reveal">Contributing is its own reward. But we add a few extra reasons to keep shipping.
+        </p>
+      </div>
+      <div class="rewards-grid">
+        <div class="reward-card glass-card reveal">
+          <div class="reward-icon">📄</div>
+          <h3 class="reward-title">Certificate of Excellence</h3>
+          <p class="reward-desc">Every contributor with 200+ points gets a verifiable digital certificate recognized by
+            40+ hiring partners. Link it on LinkedIn. It gets noticed.</p>
+          <div class="reward-threshold">Unlock at 200 pts</div>
+        </div>
+        <div class="reward-card glass-card reveal">
+          <div class="reward-icon">👕</div>
+          <h3 class="reward-title">NWOC Merch Kit</h3>
+          <p class="reward-desc">Top 50 contributors get a physical merch kit: NWOC hoodie, sticker pack, and a
+            developer notebook. Shipped to your address, anywhere in the world.</p>
+          <div class="reward-threshold">Top 50 on leaderboard</div>
+        </div>
+        <div class="reward-card glass-card reveal">
+          <div class="reward-icon">🚀</div>
+          <h3 class="reward-title">Fast-Track Internship</h3>
+          <p class="reward-desc">Top 10 contributors get direct introductions to our hiring partners — no resume
+            screening, straight to the technical round.</p>
+          <div class="reward-threshold">Top 10 contributors</div>
+        </div>
+        <div class="reward-card glass-card reveal">
+          <div class="reward-icon">🏅</div>
+          <h3 class="reward-title">Digital Badges</h3>
+          <p class="reward-desc">Unlock skill-specific badges: First PR, Bug Slayer, Speed Demon (PR in under 24h),
+            Mentor, and more. Show them on your NWOC profile.</p>
+          <div class="reward-threshold">Earn with every milestone</div>
+        </div>
+        <div class="reward-card glass-card reveal">
+          <div class="reward-icon">🤝</div>
+          <h3 class="reward-title">1-on-1 Mentorship</h3>
+          <p class="reward-desc">First-time contributors are paired with a senior engineer for their first PR. Scheduled
+            video call, live code review, personalized feedback.</p>
+          <div class="reward-threshold">All first-time contributors</div>
+        </div>
+        <div class="reward-card glass-card reveal">
+          <div class="reward-icon">🌟</div>
+          <h3 class="reward-title">Hall of Fame</h3>
+          <p class="reward-desc">Season winners are permanently featured on the NWOC Hall of Fame page, shared on social
+            media, and featured in the monthly newsletter to 10,000+ subscribers.</p>
+          <div class="reward-threshold">#1 contributor each season</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━ FAQ ━ -->
+  <section id="faq" class="faq-section section-pad" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow-pill reveal">GOT QUESTIONS?</span>
+        <h2 id="faq-heading" class="section-h2 reveal">FREQUENTLY <span class="gradient-text">ASKED</span></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item glass-card reveal" tabindex="0">
+          <button class="faq-q" aria-expanded="false">Do I need prior open-source experience to apply? <span
+              class="faq-chevron" aria-hidden="true">▾</span></button>
+          <div class="faq-a">Absolutely not. NWOC is specifically designed for contributors at ALL levels. We have "Good
+            First Issue" tasks that require nothing more than being able to write a basic function. We'll guide you
+            through everything else.</div>
+        </div>
+        <div class="faq-item glass-card reveal" tabindex="0">
+          <button class="faq-q" aria-expanded="false">Is NWOC free to join? <span class="faq-chevron"
+              aria-hidden="true">▾</span></button>
+          <div class="faq-a">100% free. Forever. We are funded by our hiring partners and not by contributors. You
+            should never pay to contribute to open source, and you should never pay to NWOC. If anyone asks you to pay,
+            it's a scam.</div>
+        </div>
+        <div class="faq-item glass-card reveal" tabindex="0">
+          <button class="faq-q" aria-expanded="false">What programming languages do I need to know? <span
+              class="faq-chevron" aria-hidden="true">▾</span></button>
+          <div class="faq-a">We have projects in TypeScript, Python, Go, Rust, Java, Kotlin, Terraform, and more. We
+            also have non-code issues: documentation, design, DevOps. There's something for every skill set.</div>
+        </div>
+        <div class="faq-item glass-card reveal" tabindex="0">
+          <button class="faq-q" aria-expanded="false">How long does application review take? <span class="faq-chevron"
+              aria-hidden="true">▾</span></button>
+          <div class="faq-a">Under 24 hours. We review every application manually and send you a GitHub org invite +
+            Discord access as soon as you're accepted. You can start contributing immediately after.</div>
+        </div>
+        <div class="faq-item glass-card reveal" tabindex="0">
+          <button class="faq-q" aria-expanded="false">Can I contribute part-time? How much time does it take? <span
+              class="faq-chevron" aria-hidden="true">▾</span></button>
+          <div class="faq-a">Yes. There's no minimum commitment. Some contributors put in 2 hours a week, others go
+            full-time mode. We recommend at least 3-5 hours per week to see real progress and climb the leaderboard
+            meaningfully.</div>
+        </div>
+        <div class="faq-item glass-card reveal" tabindex="0">
+          <button class="faq-q" aria-expanded="false">What happens if my PR gets rejected? <span class="faq-chevron"
+              aria-hidden="true">▾</span></button>
+          <div class="faq-a">PRs aren't rejected — they're reviewed. Your maintainer will leave specific, actionable
+            comments. You revise and push again. This review cycle is actually the most valuable learning you'll do
+            here. Most PRs are merged after 1-2 revision rounds.</div>
+        </div>
+        <div class="faq-item glass-card reveal" tabindex="0">
+          <button class="faq-q" aria-expanded="false">Are NWOC contributions recognized on GitHub? <span
+              class="faq-chevron" aria-hidden="true">▾</span></button>
+          <div class="faq-a">Yes! All contributions happen directly on GitHub. Merged PRs show up on your GitHub
+            profile's contribution graph. Your NWOC profile also links directly to your merged PRs so employers can see
+            real code, not just a score.</div>
+        </div>
+        <div class="faq-item glass-card reveal" tabindex="0">
+          <button class="faq-q" aria-expanded="false">I'm from outside India. Can I apply? <span class="faq-chevron"
+              aria-hidden="true">▾</span></button>
+          <div class="faq-a">Season 3 is fully global — we have contributors from 40+ countries. All communication is in
+            English. Time zones don't matter because issues are async. Merch is shipped internationally too.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━ APPLY CTA ━ -->
+  <section id="apply" class="apply-section section-pad" aria-labelledby="apply-heading">
+    <div class="container">
+      <div class="apply-card glass-card reveal">
+        <div class="apply-orb" aria-hidden="true"></div>
+        <span class="eyebrow-pill">LIMITED SPOTS</span>
+        <h2 id="apply-heading" class="apply-h2">READY TO <span class="gradient-text">SHIP?</span></h2>
+        <p class="apply-sub">Season 2026 is live. 2,400+ developers are already contributing. Join them before spots
+          fill up.</p>
+        <div class="apply-actions">
+          <a href="#" class="btn-primary btn-lg" id="apply-now-btn">Apply Now — It's Free <span
+              aria-hidden="true">→</span></a>
+          <a href="#tasks" class="btn-glass btn-lg">Browse Open Tasks</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-border" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span class="logo-text">NWOC</span>
+          </div>
+          <p class="footer-tagline">Ship real code.<br />Build real reputation.<br />Be part of something global.</p>
+          <div class="social-icons" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="GitHub" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.41-.01 2.74 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter / X" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Discord" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="LinkedIn" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Quick Links</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="#hero" class="footer-link">Home</a></li>
+            <li><a href="#projects" class="footer-link">Projects</a></li>
+            <li><a href="#tasks" class="footer-link">Open Tasks</a></li>
+            <li><a href="#leaderboard" class="footer-link">Leaderboard</a></li>
+            <li><a href="#apply" class="footer-link">Apply Now</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Community -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Community</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="#" class="footer-link">Discord Server</a></li>
+            <li><a href="#" class="footer-link">GitHub Organization</a></li>
+            <li><a href="#" class="footer-link">Contributors Blog</a></li>
+            <li><a href="#" class="footer-link">Code of Conduct</a></li>
+            <li><a href="#" class="footer-link">Hall of Fame</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Contact</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="mailto:hello@nwoc.dev" class="footer-link">hello@nwoc.dev</a></li>
+            <li><a href="#" class="footer-link">Report an Issue</a></li>
+            <li><a href="#" class="footer-link">Partner With Us</a></li>
+            <li><a href="#" class="footer-link">Press Kit</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <span>© 2026 NWOC – Nexus Spring of Code. Built with ❤️ by developers, for developers.</span>
+        <span class="footer-legal">
+          <a href="#" class="footer-link">Privacy Policy</a> ·
+          <a href="#" class="footer-link">Terms of Service</a> ·
+          <a href="#" class="footer-link">Cookie Policy</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ COMMAND PALETTE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div id="cmd-palette" role="dialog" aria-modal="true" aria-label="Command Palette" hidden>
+    <div class="cmd-backdrop"></div>
+    <div class="cmd-modal glass-card">
+      <div class="cmd-search-wrap">
+        <span class="cmd-search-icon" aria-hidden="true">⌘</span>
+        <input type="text" id="cmd-input" class="cmd-input" placeholder="Search pages, projects, issues..."
+          autocomplete="off" aria-autocomplete="list" aria-controls="cmd-results" />
+        <kbd class="cmd-esc">Esc</kbd>
+      </div>
+      <div id="cmd-results" class="cmd-results" role="listbox" aria-label="Command palette results">
+        <div class="cmd-group">
+          <div class="cmd-group-label">Navigation</div>
+          <button class="cmd-item" role="option" data-href="#hero" tabindex="-1">
+            <span class="cmd-item-icon" aria-hidden="true">🏠</span>
+            <span class="cmd-item-label">Home</span>
+            <kbd class="cmd-shortcut">↵</kbd>
+          </button>
+          <button class="cmd-item" role="option" data-href="#projects" tabindex="-1">
+            <span class="cmd-item-icon" aria-hidden="true">📁</span>
+            <span class="cmd-item-label">Projects</span>
+            <kbd class="cmd-shortcut">↵</kbd>
+          </button>
+          <button class="cmd-item" role="option" data-href="#tasks" tabindex="-1">
+            <span class="cmd-item-icon" aria-hidden="true">⚡</span>
+            <span class="cmd-item-label">Open Tasks</span>
+            <kbd class="cmd-shortcut">↵</kbd>
+          </button>
+          <button class="cmd-item" role="option" data-href="#leaderboard" tabindex="-1">
+            <span class="cmd-item-icon" aria-hidden="true">🏆</span>
+            <span class="cmd-item-label">Leaderboard</span>
+            <kbd class="cmd-shortcut">↵</kbd>
+          </button>
+          <button class="cmd-item" role="option" data-href="#apply" tabindex="-1">
+            <span class="cmd-item-icon" aria-hidden="true">🚀</span>
+            <span class="cmd-item-label">Apply Now</span>
+            <kbd class="cmd-shortcut">↵</kbd>
+          </button>
+        </div>
+        <div class="cmd-group">
+          <div class="cmd-group-label">Actions</div>
+          <button class="cmd-item" role="option" data-action="signin" tabindex="-1">
+            <span class="cmd-item-icon" aria-hidden="true">🔐</span>
+            <span class="cmd-item-label">Sign In</span>
+            <kbd class="cmd-shortcut">↵</kbd>
+          </button>
+          <button class="cmd-item" role="option" data-action="discord" tabindex="-1">
+            <span class="cmd-item-icon" aria-hidden="true">💬</span>
+            <span class="cmd-item-label">Join Discord</span>
+            <kbd class="cmd-shortcut">↵</kbd>
+          </button>
+        </div>
+        <div class="cmd-group">
+          <div class="cmd-group-label">Recent</div>
+          <button class="cmd-item" role="option" data-href="#tasks" tabindex="-1">
+            <span class="cmd-item-icon" aria-hidden="true">🕐</span>
+            <span class="cmd-item-label">Fix WebSocket Race Condition</span>
+            <kbd class="cmd-shortcut">↵</kbd>
+          </button>
+          <button class="cmd-item" role="option" data-href="#tasks" tabindex="-1">
+            <span class="cmd-item-icon" aria-hidden="true">🕐</span>
+            <span class="cmd-item-label">Add OAuth2 Provider Support</span>
+            <kbd class="cmd-shortcut">↵</kbd>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile navigation" id="mobile-bottom-nav">
+    <a href="#hero" class="mob-nav-item active" id="mob-home" aria-label="Home">
+      <span aria-hidden="true">🏠</span><span>Home</span>
+    </a>
+    <a href="#projects" class="mob-nav-item" id="mob-projects" aria-label="Projects">
+      <span aria-hidden="true">📁</span><span>Projects</span>
+    </a>
+    <a href="#tasks" class="mob-nav-item" id="mob-tasks" aria-label="Tasks">
+      <span aria-hidden="true">⚡</span><span>Tasks</span>
+    </a>
+    <a href="#leaderboard" class="mob-nav-item" id="mob-lb" aria-label="Leaderboard">
+      <span aria-hidden="true">🏆</span><span>Leaderboard</span>
+    </a>
+    <a href="#apply" class="mob-nav-item" id="mob-profile" aria-label="Profile">
+      <span aria-hidden="true">👤</span><span>Profile</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="/js/scene.js"></script>
+  <script src="/js/universe.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+# ───────── Node / npm ─────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+
+# ───────── Next.js source (old — not used) ─────────
+src/
+
+# ───────── Next.js build artefacts ─────────
+.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# ───────── Vite build output ─────────
+dist/
+
+# ───────── Env & secrets ─────────
+.env*
+*.pem
+
+# ───────── Vercel ─────────
+.vercel
+
+# ───────── Yarn ─────────
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# ───────── OS junk ─────────
+.DS_Store
+Thumbs.db
+
+# ───────── Project junk / logs ─────────
+build.log
+build2.log
+build3.log
+tsc.log
+tsc_errors.txt
+fix.py
+tmp_diff.patch
+update_points.js
+
+# ───────── Misc ─────────
+jsconfig.json
+components.json
+postcss.config.mjs
+next.config.mjs
